@@ -50,8 +50,8 @@ public class libroService {
      * crear una nueva lista de strings con la información formateada de cada libro
      */
     public void transformarInformacion() {
-        Function<Libro, String> libroAformatear = (Libro) -> {
-            return "titulo " + Libro.getNombreLibro() + " nombre del autor" + Libro.getNombreAutor();
+        Function<Libro, String> libroAformatear = (libro) -> {
+            return "titulo " + libro.getNombreLibro() + " nombre del autor" + libro.getNombreAutor();
         };
 
         List<String> informacionFormateada = biblioteca.stream()
@@ -66,11 +66,27 @@ public class libroService {
     // metodo mostrar SOLO EL GENERO DEL LIBRO 
 
     public void generoLibro(){
-        Consumer <Libro> generoLibro = (Libro) -> {
-            return " genero del libro es " + Libro.getGeneroLiterario();
+
+        // version larga 
+
+        /* la mas recomendada para aprender el paso a paso es la version larga  */
+
+        /*
+         *  Consumer <Libro> generoLibro = (Libro) -> {
+           System.out.println(" el genero de libro es "+ Libro.getGeneroLiterario());
         };
 
-        List<String> infoGeneroLibro = biblioteca.stream().forEach(generoLibro);
+        System.out.println("--- generos de los libros en la biblioteca ---");
+        biblioteca.stream().forEach(generoLibro);
+         * 
+         */
+
+         // version mas simplificada
+
+        /*  System.out.println("-- genero de los libros en la biblioteca");
+
+         biblioteca.forEach(libro-> System.out.println(" Genero"+ libro.getGeneroLiterario()));
+       */
     }
 
 }
